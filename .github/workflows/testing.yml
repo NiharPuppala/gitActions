@@ -1,0 +1,21 @@
+name: Display testing
+run-name: Testing Github Action for Display
+
+on: [push]
+
+jobs:
+    trail-python-run:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{ matrix.python-version }}
+                cache: pip
+            
+            - name: Run our Display
+              run: |
+                python test_scientific_calculator.py
